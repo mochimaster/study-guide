@@ -1,0 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+
+# @param {Integer[]} nums
+# @return {TreeNode}
+def construct_maximum_binary_tree(nums)
+    tree_node = TreeNode.new(nums.max)
+    
+    if nums.length == 1
+        return tree_node
+    end
+    
+    max_index = nums.index(nums.max)
+    left_nums = nums.slice(0, max_index)
+    right_nums = nums.slice(max_index+1, nums.length)
+
+    if left_nums != []
+       tree_node.left = construct_maximum_binary_tree(left_nums)  
+    end
+    
+    if right_nums != []
+       tree_node.right = construct_maximum_binary_tree(right_nums)  
+    end
+
+    tree_node
+end

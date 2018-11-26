@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
+
+# @param {TreeNode} root
+# @param {Integer} l
+# @param {Integer} r
+# @return {Integer}
+def range_sum_bst(root, l, r)
+    queue = [root]
+    sum = 0
+    
+    if root.val.between?(l,r)
+       sum += root.val 
+    end
+    
+    until queue.empty?
+       el = queue.shift
+        
+        if el.left
+            if el.left.val.between?(l,r) 
+                sum += el.left.val 
+            end
+            queue << el.left
+        end
+        
+        if el.right
+            if el.right.val.between?(l,r)
+                sum += el.right.val
+            end
+            queue << el.right
+        end
+    end
+    sum
+end
