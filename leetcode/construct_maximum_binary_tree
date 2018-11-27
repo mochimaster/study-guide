@@ -27,6 +27,5 @@ def construct_maximum_binary_tree(nums)
     if right_nums != []
        tree_node.right = construct_maximum_binary_tree(right_nums)  
     end
-
     tree_node
 end
