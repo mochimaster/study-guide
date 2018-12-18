@@ -17,8 +17,9 @@ var partitionDisjoint = function(A) {
         left = A.slice(0,i)
         right = A.slice(i)  
         if (Math.max(...left) > Math.min(...right) ){
-            i += 1;
+            i += 2;
         }else {
+            return i-1
             break;
         }
 
